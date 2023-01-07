@@ -20,6 +20,7 @@ class Solution(object):
         mid_idx = (l1_size + l2_size) // 2 + 1
         
         while (idx1 + idx2 < mid_idx):
+            # Checks the scope to make sure the idx doesn't exceed list size
             if (idx1 == l1_size):
                 _idx1 = True
                 break
