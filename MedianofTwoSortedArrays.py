@@ -1,3 +1,7 @@
+"""
+Speed: 73.71 percentile
+Space: 78.18 percentile
+"""
 class Solution(object):
     def findMedianSortedArrays(self, nums1, nums2):
         """
