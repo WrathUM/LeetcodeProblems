@@ -1,5 +1,8 @@
 # Algorithm on https://en.wikipedia.org/wiki/Bridge_(graph_theory)#Tarjan%27s_bridge-finding_algorithm
-
+"""
+Speed: 68.18 Percentile
+Space: 72.73 Percentile
+"""
 class Solution(object):
     def criticalConnections(self, n, connections):
         """
