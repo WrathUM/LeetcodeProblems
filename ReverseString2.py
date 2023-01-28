@@ -1,3 +1,7 @@
+"""
+Speed: 77.82 Percentile
+Space: 6.61 Percentile
+"""
 def reverseStr(self, s, k):
       """
       :type s: str
