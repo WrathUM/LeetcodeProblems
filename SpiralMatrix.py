@@ -1,61 +1,24 @@
-def spiralOrder(self, matrix):
-        """
-        :type matrix: List[List[int]]
-        :rtype: List[int]
-        """
-        width = len(matrix[0])
-        height = len(matrix)
-        
-        visited = set()
-        n = width * height
-        
-        
+def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         res = []
-        i,j = 0,0
-        r,l,u,d = True, False, False, False
-        while len(visited) != n:
-            print((j,i))
-            visited.add((j,i))
-            res.append(matrix[j][i])
-
-            if u:
-                if j - 1 >= 0 and (j - 1, i) not in visited:
-                    j -= 1
-                    continue
-                else:
-                    i += 1
-                    r = True
-                    u = False
-                    continue
-                
-            elif l:
-                if i - 1 >= 0 and (j, i - 1) not in visited:
-                    i -= 1
-                    continue
-                else:
-                    j -= 1
-                    u = True
-                    l = False
-                    continue
-                
-            elif r: 
-                if i + 1 < width and (j,i + 1) not in visited:
-                    i += 1
-                    continue
-                else:
-                    j += 1
-                    d = True
-                    r = False
-                    continue
-                
-            elif d: 
-                if j + 1 < height and (j + 1, i) not in visited:
-                    j += 1
-                    continue
-                else:
-                    i -= 1
-                    l = True
-                    d = False
-                    continue
-
+        if len(matrix) == 0:
+            return res
+        row_begin = 0
+        col_begin = 0
+        row_end = len(matrix)-1 
+        col_end = len(matrix[0])-1
+        while (row_begin <= row_end and col_begin <= col_end):
+            for i in range(col_begin,col_end+1):
+                res.append(matrix[row_begin][i])
+            row_begin += 1
+            for i in range(row_begin,row_end+1):
+                res.append(matrix[i][col_end])
+            col_end -= 1
+            if (row_begin <= row_end):
+                for i in range(col_end,col_begin-1,-1):
+                    res.append(matrix[row_end][i])
+                row_end -= 1
+            if (col_begin <= col_end):
+                for i in range(row_end,row_begin-1,-1):
+                    res.append(matrix[i][col_begin])
+                col_begin += 1
         return res
