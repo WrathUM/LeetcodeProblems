@@ -1,0 +1,55 @@
+class Solution:
+    def maximumXorProduct(self, a: int, b: int, n: int) -> int:
+        res = 0
+        x = 0
+        
+        x1 = a
+        x2 = b
+        
+        for i in range(n):
+            # print(i)
+            v = 1 << i
+            a1 = (a & v) >> i
+            b1 = (b & v) >> i
+            if  a1  == 0 and b1  == 0:
+                x |= v
+            elif a1 == 1 and b1 == 0:
+                if ((a ^ v) * (b ^ v)) > (a * b):
+                    # print(a, b, v)
+                    x |= v
+                else:
+                    continue
+            elif a1 == 0 and b1 == 1:
+                if ((a ^ v) * (b ^ v)) > (a * b):
+                    # print(a, b, v)
+                    x |= v
+                else:
+                    continue
+            else:
+                continue
+            a ^= v
+            b ^= v
+        
+        print(x1, x2, x)
+        res = (x1 ^ x) * (x2 ^ x)
+        # print((1 ^ 60) *  (2 ^ 60))
+        
+        return res % (10**9 + 7)
+        
+        """
+        a = 0001
+        b = 0101
+        x = 0010
+        
+        a = 00110
+        b = 00111
+        x = 11001
+        
+        0000  0000 0001
+        0000  0000 0010
+        0000  0011 1100
+        1110  1100 0110
+        
+        
+        """
+        
